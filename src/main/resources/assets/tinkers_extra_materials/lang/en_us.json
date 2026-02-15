@@ -1,0 +1,32 @@
+{
+  "material.tinkers_extra_materials.unobtainium": "Unobtainium",
+  "item.tinkers_extra_materials.unobtainium_ingot": "Unobtainium Ingot",
+  "item.tinkers_extra_materials.unobtainium_nugget": "Unobtainium Nugget",
+  "block.tinkers_extra_materials.unobtainium_block": "Block of Unobtainium",
+  "fluid.tinkers_extra_materials.molten_unobtainium": "Molten Unobtainium",
+  "item.tinkers_extra_materials.molten_unobtainium_bucket": "Molten Unobtainium Bucket",
+
+  "material.tinkers_extra_materials.mythican": "Mythican",
+  "item.tinkers_extra_materials.mythican_ingot": "Mythican Ingot",
+  "item.tinkers_extra_materials.mythican_nugget": "Mythican Nugget",
+  "block.tinkers_extra_materials.mythican_block": "Block of Mythican",
+  "fluid.tinkers_extra_materials.molten_mythican": "Molten Mythican",
+  "item.tinkers_extra_materials.molten_mythican_bucket": "Molten Mythican Bucket",
+
+  "modifier.tinkers_extra_materials.potential": "Potential",
+  "modifier.tinkers_extra_materials.potential.flavor": "Unlocking hidden capabilities...",
+  "modifier.tinkers_extra_materials.potential.description": "Grants an additional ability modifier slot per level",
+
+  "material.tinkers_extra_materials.star_platinum": "Star Platinum",
+  "item.tinkers_extra_materials.star_platinum_ingot": "Star Platinum Ingot",
+  "item.tinkers_extra_materials.star_platinum_nugget": "Star Platinum Nugget",
+  "block.tinkers_extra_materials.star_platinum_block": "Block of Star Platinum",
+  "fluid.tinkers_extra_materials.molten_star_platinum": "Molten Star Platinum",
+  "item.tinkers_extra_materials.molten_star_platinum_bucket": "Molten Star Platinum Bucket",
+
+  "modifier.tinkers_extra_materials.stand_ground": "Stand Ground",
+  "modifier.tinkers_extra_materials.stand_ground.flavor": "ORA ORA ORA!",
+  "modifier.tinkers_extra_materials.stand_ground.description": "Has a chance to summon your Stand, a translucent clone that attacks your target for 10 seconds",
+
+  "itemGroup.tinkers_extra_materials": "Tinkers' Extra Materials"
+}

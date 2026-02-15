@@ -1,0 +1,11 @@
+{
+  "material.tinkers_extra_materials": {
+    "unobtainium": "#100F16",
+    "mythican": "#71A976",
+    "star_platinum": "#4F306C"
+  },
+  "modifier.tinkers_extra_materials": {
+    "potential": "#71A976",
+    "stand_ground": "#B988AD"
+  }
+}

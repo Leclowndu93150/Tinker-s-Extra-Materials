@@ -2,10 +2,19 @@
   "material.tinkers_extra_materials": {
     "unobtainium": "#100F16",
     "mythican": "#71A976",
-    "star_platinum": "#4F306C"
+    "star_platinum": "#4F306C",
+    "runican": "#7B8FA1",
+    "pillagum": "#517971",
+    "material_000": "#3B344B",
+    "bell_metal": "#876D48",
+    "evolite": "#9C71C7"
   },
   "modifier.tinkers_extra_materials": {
     "potential": "#71A976",
-    "stand_ground": "#B988AD"
+    "stand_ground": "#B988AD",
+    "engraving": "#7B8FA1",
+    "unstable": "#605579",
+    "resonance": "#B1A06D",
+    "evolving": "#9C71C7"
   }
 }

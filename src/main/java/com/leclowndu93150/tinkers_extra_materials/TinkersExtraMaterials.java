@@ -5,6 +5,7 @@ import com.leclowndu93150.tinkers_extra_materials.modifier.StandEntity;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEBlocks;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEEntities;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEFluids;
+import com.leclowndu93150.tinkers_extra_materials.registry.TEHooks;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEItems;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEModifiers;
 import net.minecraft.core.registries.Registries;
@@ -12,8 +13,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import com.leclowndu93150.tinkers_extra_materials.config.TEMConfig;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,11 +46,20 @@ public class TinkersExtraMaterials {
                 output.accept(TEItems.STAR_PLATINUM_NUGGET.get());
                 output.accept(TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get());
                 output.accept(TEFluids.MOLTEN_STAR_PLATINUM);
+                output.accept(TEItems.RUNICAN.get());
+                output.accept(TEItems.PILLAGUM.get());
+                output.accept(TEItems.MATERIAL_000.get());
+                output.accept(TEItems.BELL_METAL_INGOT.get());
+                output.accept(TEItems.BELL_METAL_NUGGET.get());
+                output.accept(TEBlocks.BELL_METAL_BLOCK_ITEM.get());
+                output.accept(TEFluids.MOLTEN_BELL_METAL);
+                output.accept(TEItems.EVOLITE.get());
             })
             .build());
 
     public TinkersExtraMaterials() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TEMConfig.SPEC);
         modEventBus.addListener(TEDataGen::gatherData);
         modEventBus.addListener(TinkersExtraMaterials::entityAttributes);
 
@@ -54,6 +67,7 @@ public class TinkersExtraMaterials {
         TEBlocks.register(modEventBus);
         TEFluids.register(modEventBus);
         TEEntities.register(modEventBus);
+        TEHooks.register();
         TEModifiers.init(modEventBus);
         CREATIVE_TABS.register(modEventBus);
     }

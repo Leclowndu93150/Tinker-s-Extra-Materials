@@ -20,6 +20,15 @@ public class TEItems {
     public static final RegistryObject<Item> STAR_PLATINUM_INGOT = ITEMS.register("star_platinum_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STAR_PLATINUM_NUGGET = ITEMS.register("star_platinum_nugget", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> RUNICAN = ITEMS.register("runican", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PILLAGUM = ITEMS.register("pillagum", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MATERIAL_000 = ITEMS.register("material_000", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BELL_METAL_INGOT = ITEMS.register("bell_metal_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BELL_METAL_NUGGET = ITEMS.register("bell_metal_nugget", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> EVOLITE = ITEMS.register("evolite", () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

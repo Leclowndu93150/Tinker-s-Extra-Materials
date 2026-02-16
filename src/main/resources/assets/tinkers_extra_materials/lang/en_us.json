@@ -28,5 +28,40 @@
   "modifier.tinkers_extra_materials.stand_ground.flavor": "ORA ORA ORA!",
   "modifier.tinkers_extra_materials.stand_ground.description": "Has a chance to summon your Stand, a translucent clone that attacks your target for 10 seconds",
 
+  "material.tinkers_extra_materials.runican": "Runican",
+  "item.tinkers_extra_materials.runican": "Runican",
+
+  "material.tinkers_extra_materials.pillagum": "Pillagum",
+  "item.tinkers_extra_materials.pillagum": "Pillagum",
+
+  "material.tinkers_extra_materials.material_000": "Material 000",
+  "item.tinkers_extra_materials.material_000": "Material 000",
+
+  "modifier.tinkers_extra_materials.unstable": "Unstable",
+  "modifier.tinkers_extra_materials.unstable.flavor": "Chaos is a ladder.",
+  "modifier.tinkers_extra_materials.unstable.description": "Breaking a block or hitting a mob has a 10% chance to grant Haste, Strength or Luck for 10 seconds",
+
+  "material.tinkers_extra_materials.bell_metal": "Bell Metal",
+  "item.tinkers_extra_materials.bell_metal_ingot": "Bell Metal Ingot",
+  "item.tinkers_extra_materials.bell_metal_nugget": "Bell Metal Nugget",
+  "block.tinkers_extra_materials.bell_metal_block": "Block of Bell Metal",
+  "fluid.tinkers_extra_materials.molten_bell_metal": "Molten Bell Metal",
+  "item.tinkers_extra_materials.molten_bell_metal_bucket": "Molten Bell Metal Bucket",
+
+  "modifier.tinkers_extra_materials.resonance": "Resonance",
+  "modifier.tinkers_extra_materials.resonance.flavor": "The ring of metal echoes through your bones.",
+  "modifier.tinkers_extra_materials.resonance.description": "Briefly increases jump height and speed when mining a block, hitting a mob, or taking damage",
+
+  "modifier.tinkers_extra_materials.engraving": "Engraving",
+  "modifier.tinkers_extra_materials.engraving.flavor": "Carve your destiny into the blade.",
+  "modifier.tinkers_extra_materials.engraving.description": "Right-click a compatible tool part onto the tool in your inventory to engrave its traits onto the tool. 3 engravings per Runican part used.",
+
+  "material.tinkers_extra_materials.evolite": "Evolite",
+  "item.tinkers_extra_materials.evolite": "Evolite",
+
+  "modifier.tinkers_extra_materials.evolving": "Evolving",
+  "modifier.tinkers_extra_materials.evolving.flavor": "Adapting to every challenge.",
+  "modifier.tinkers_extra_materials.evolving.description": "Getting experience temporarily boosts the mining speed, damage and draw speed of this tool",
+
   "itemGroup.tinkers_extra_materials": "Tinkers' Extra Materials"
 }

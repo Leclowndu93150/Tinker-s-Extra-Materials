@@ -20,8 +20,8 @@ public class TEItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(Tags.Items.INGOTS).add(TEItems.UNOBTAINIUM_INGOT.get(), TEItems.MYTHICAN_INGOT.get(), TEItems.STAR_PLATINUM_INGOT.get());
-        tag(Tags.Items.NUGGETS).add(TEItems.UNOBTAINIUM_NUGGET.get(), TEItems.MYTHICAN_NUGGET.get(), TEItems.STAR_PLATINUM_NUGGET.get());
-        tag(Tags.Items.STORAGE_BLOCKS).add(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get(), TEBlocks.MYTHICAN_BLOCK_ITEM.get(), TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get());
+        tag(Tags.Items.INGOTS).add(TEItems.UNOBTAINIUM_INGOT.get(), TEItems.MYTHICAN_INGOT.get(), TEItems.STAR_PLATINUM_INGOT.get(), TEItems.BELL_METAL_INGOT.get());
+        tag(Tags.Items.NUGGETS).add(TEItems.UNOBTAINIUM_NUGGET.get(), TEItems.MYTHICAN_NUGGET.get(), TEItems.STAR_PLATINUM_NUGGET.get(), TEItems.BELL_METAL_NUGGET.get());
+        tag(Tags.Items.STORAGE_BLOCKS).add(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get(), TEBlocks.MYTHICAN_BLOCK_ITEM.get(), TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get(), TEBlocks.BELL_METAL_BLOCK_ITEM.get());
     }
 }

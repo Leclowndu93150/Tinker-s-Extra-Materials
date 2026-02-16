@@ -30,6 +30,7 @@ public class TEBucketModelProvider implements DataProvider {
         addBucketModel(futures, cache, outputPath, "molten_unobtainium", TEFluids.MOLTEN_UNOBTAINIUM);
         addBucketModel(futures, cache, outputPath, "molten_mythican", TEFluids.MOLTEN_MYTHICAN);
         addBucketModel(futures, cache, outputPath, "molten_star_platinum", TEFluids.MOLTEN_STAR_PLATINUM);
+        addBucketModel(futures, cache, outputPath, "molten_bell_metal", TEFluids.MOLTEN_BELL_METAL);
 
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }

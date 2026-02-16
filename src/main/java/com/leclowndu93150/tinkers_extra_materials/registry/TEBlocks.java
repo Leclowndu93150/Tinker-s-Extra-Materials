@@ -46,6 +46,16 @@ public class TEBlocks {
     public static final RegistryObject<Item> STAR_PLATINUM_BLOCK_ITEM = TEItems.ITEMS.register("star_platinum_block",
         () -> new BlockItem(STAR_PLATINUM_BLOCK.get(), new Item.Properties()));
 
+    public static final RegistryObject<Block> BELL_METAL_BLOCK = BLOCKS.register("bell_metal_block",
+        () -> new Block(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.GOLD)
+            .requiresCorrectToolForDrops()
+            .strength(30f, 600f)
+            .sound(SoundType.METAL)));
+
+    public static final RegistryObject<Item> BELL_METAL_BLOCK_ITEM = TEItems.ITEMS.register("bell_metal_block",
+        () -> new BlockItem(BELL_METAL_BLOCK.get(), new Item.Properties()));
+
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }

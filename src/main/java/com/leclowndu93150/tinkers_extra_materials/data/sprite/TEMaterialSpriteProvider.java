@@ -20,12 +20,12 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
             .meleeHarvest().ranged().armor().shieldCore()
             .fallbacks("metal")
             .colorMapper(GreyToColorMapping.builderFromBlack()
-                .addARGB(63, 0xFF080810)
-                .addARGB(102, 0xFF0C0B14)
-                .addARGB(140, 0xFF100F16)
-                .addARGB(178, 0xFF18171E)
-                .addARGB(216, 0xFF201F28)
-                .addARGB(255, 0xFF2A2932)
+                .addARGB(63, 0xFF1A1928)
+                .addARGB(102, 0xFF2E2D40)
+                .addARGB(140, 0xFF464558)
+                .addARGB(178, 0xFF5E5D72)
+                .addARGB(216, 0xFF7A7990)
+                .addARGB(255, 0xFF9896B0)
                 .build());
 
         ResourceLocation mythicanBase = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/mythican_base");
@@ -38,8 +38,8 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
                 .addTexture(102, mythicanBase, 0xFF808080)
                 .addTexture(140, mythicanBase)
                 .addTexture(178, mythicanBase)
-                .addTexture(216, mythicanHighlight, 0xFFE1E1E1)
-                .addTexture(255, mythicanHighlight)
+                    //.addTexture(216, mythicanHighlight, 0xFFE1E1E1)
+                //.addTexture(255, mythicanHighlight)
                 .build());
 
         buildMaterial(TEMaterialIds.STAR_PLATINUM)
@@ -52,6 +52,68 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
                 .addARGB(178, 0xFF8F6093)
                 .addARGB(216, 0xFFB988AD)
                 .addARGB(255, 0xFFF0D7BD)
+                .build());
+
+        buildMaterial(TEMaterialIds.RUNICAN)
+            .meleeHarvest().ranged()
+            .fallbacks("rock")
+            .colorMapper(GreyToColorMapping.builderFromBlack()
+                .addARGB(63, 0xFF3D4654)
+                .addARGB(102, 0xFF556578)
+                .addARGB(140, 0xFF7B8FA1)
+                .addARGB(178, 0xFF9AAFBF)
+                .addARGB(216, 0xFFB5C8D6)
+                .addARGB(255, 0xFFD4E3ED)
+                .build());
+
+        buildMaterial(TEMaterialIds.PILLAGUM)
+            .meleeHarvest().ranged()
+            .fallbacks("metal")
+            .colorMapper(GreyToColorMapping.builderFromBlack()
+                .addARGB(63, 0xFF131E23)
+                .addARGB(102, 0xFF273D3F)
+                .addARGB(140, 0xFF375656)
+                .addARGB(178, 0xFF517971)
+                .addARGB(216, 0xFF6D9B8B)
+                .addARGB(255, 0xFFA2DCB6)
+                .build());
+
+        ResourceLocation material000Tex = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/material_000");
+        buildMaterial(TEMaterialIds.MATERIAL_000)
+            .meleeHarvest().ranged()
+            .fallbacks("metal")
+            .transformer(GreyToSpriteTransformer.builderFromBlack()
+                .addTexture(63, material000Tex, 0xFF404040)
+                .addTexture(102, material000Tex, 0xFF808080)
+                .addTexture(140, material000Tex)
+                .addTexture(178, material000Tex)
+                .addTexture(216, material000Tex, 0xFFE1E1E1)
+                .addTexture(255, material000Tex)
+                .build());
+
+        buildMaterial(TEMaterialIds.BELL_METAL)
+            .meleeHarvest().ranged().armor().shieldCore()
+            .fallbacks("metal")
+            .colorMapper(GreyToColorMapping.builderFromBlack()
+                .addARGB(63, 0xFF251B14)
+                .addARGB(102, 0xFF3E3323)
+                .addARGB(140, 0xFF604D34)
+                .addARGB(178, 0xFF876D48)
+                .addARGB(216, 0xFFA08B5C)
+                .addARGB(255, 0xFFC2B78F)
+                .build());
+
+        ResourceLocation evoliteTex = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/evolite");
+        buildMaterial(TEMaterialIds.EVOLITE)
+            .meleeHarvest().ranged()
+            .fallbacks("crystal")
+            .transformer(GreyToSpriteTransformer.builderFromBlack()
+                .addTexture(63, evoliteTex, 0xFF404040)
+                .addTexture(102, evoliteTex, 0xFF808080)
+                .addTexture(140, evoliteTex)
+                .addTexture(178, evoliteTex)
+                .addTexture(216, evoliteTex, 0xFFE1E1E1)
+                .addTexture(255, evoliteTex)
                 .build());
     }
 }

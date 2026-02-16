@@ -1,6 +1,7 @@
 package com.leclowndu93150.tinkers_extra_materials.modifier;
 
 import com.leclowndu93150.tinkers_extra_materials.TinkersExtraMaterials;
+import com.leclowndu93150.tinkers_extra_materials.config.TEMConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -35,8 +36,6 @@ import java.util.function.Predicate;
 public class StandGroundModifier extends Modifier implements OnAttackedModifierHook, GeneralInteractionModifierHook, ProjectileLaunchModifierHook {
 
     private static final ResourceLocation COOLDOWN_KEY = new ResourceLocation(TinkersExtraMaterials.MODID, "stand_ground_cooldown");
-    private static final int COOLDOWN_TICKS = 30 * 20;
-    private static final float ARMOR_TRIGGER_CHANCE = 0.2f;
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
@@ -53,7 +52,7 @@ public class StandGroundModifier extends Modifier implements OnAttackedModifierH
         if (attacker == null) return;
         LivingEntity wearer = context.getEntity();
         if (wearer.level().isClientSide) return;
-        if (wearer.getRandom().nextFloat() >= ARMOR_TRIGGER_CHANCE) return;
+        if (wearer.getRandom().nextFloat() >= TEMConfig.STAND_GROUND_ARMOR_TRIGGER_CHANCE.get()) return;
 
         spawnStand(wearer, attacker);
     }
@@ -101,16 +100,17 @@ public class StandGroundModifier extends Modifier implements OnAttackedModifierH
     }
 
     private void setCooldown(IToolStackView tool, LivingEntity entity) {
-        tool.getPersistentData().putInt(COOLDOWN_KEY, (int)(entity.level().getGameTime() + COOLDOWN_TICKS));
+        tool.getPersistentData().putInt(COOLDOWN_KEY, (int)(entity.level().getGameTime() + TEMConfig.STAND_GROUND_COOLDOWN.get()));
     }
 
     @Nullable
     private LivingEntity findTarget(LivingEntity owner) {
         Vec3 eyePos = owner.getEyePosition();
         Vec3 lookVec = owner.getViewVector(1.0f);
-        Vec3 endPos = eyePos.add(lookVec.scale(32));
+        int searchRange = TEMConfig.STAND_SEARCH_RANGE.get();
+        Vec3 endPos = eyePos.add(lookVec.scale(searchRange));
 
-        AABB searchArea = owner.getBoundingBox().expandTowards(lookVec.scale(32)).inflate(2.0);
+        AABB searchArea = owner.getBoundingBox().expandTowards(lookVec.scale(searchRange)).inflate(2.0);
         List<Entity> entities = owner.level().getEntities(owner, searchArea, e -> e instanceof LivingEntity && e.isAlive() && e != owner);
 
         Entity closest = null;

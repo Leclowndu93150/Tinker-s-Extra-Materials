@@ -23,7 +23,8 @@ public class TEMaterialTagProvider extends AbstractMaterialTagProvider {
         tag(TinkerTags.Materials.COMPATABILITY_METALS).addOptional(
             TEMaterialIds.UNOBTAINIUM,
             TEMaterialIds.MYTHICAN,
-            TEMaterialIds.STAR_PLATINUM
+            TEMaterialIds.STAR_PLATINUM,
+            TEMaterialIds.BELL_METAL
         );
     }
 }

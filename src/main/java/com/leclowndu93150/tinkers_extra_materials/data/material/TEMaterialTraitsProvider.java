@@ -51,5 +51,16 @@ public class TEMaterialTraitsProvider extends AbstractMaterialTraitDataProvider 
 
         addDefaultTraits(TEMaterialIds.STAR_PLATINUM, TEModifierIds.STAND_GROUND);
         addArmorTraits(TEMaterialIds.STAR_PLATINUM, TEModifierIds.STAND_GROUND);
+
+        addDefaultTraits(TEMaterialIds.RUNICAN, TEModifierIds.ENGRAVING);
+
+        addDefaultTraits(TEMaterialIds.PILLAGUM, ModifierIds.killager);
+
+        addDefaultTraits(TEMaterialIds.MATERIAL_000, TEModifierIds.UNSTABLE);
+
+        addDefaultTraits(TEMaterialIds.BELL_METAL, TEModifierIds.RESONANCE);
+        addArmorTraits(TEMaterialIds.BELL_METAL, TEModifierIds.RESONANCE);
+
+        addDefaultTraits(TEMaterialIds.EVOLITE, TEModifierIds.EVOLVING);
     }
 }

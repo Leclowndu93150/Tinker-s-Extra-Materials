@@ -22,6 +22,12 @@ public class TEItemModelProvider extends ItemModelProvider {
         simpleItem(TEItems.MYTHICAN_NUGGET);
         simpleItem(TEItems.STAR_PLATINUM_INGOT);
         simpleItem(TEItems.STAR_PLATINUM_NUGGET);
+        simpleItem(TEItems.RUNICAN);
+        simpleItem(TEItems.PILLAGUM);
+        simpleItem(TEItems.MATERIAL_000);
+        simpleItem(TEItems.BELL_METAL_INGOT);
+        simpleItem(TEItems.BELL_METAL_NUGGET);
+        simpleItem(TEItems.EVOLITE);
     }
 
     private void simpleItem(RegistryObject<Item> item) {

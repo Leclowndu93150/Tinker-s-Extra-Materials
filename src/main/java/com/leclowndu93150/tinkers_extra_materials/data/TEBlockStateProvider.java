@@ -19,6 +19,7 @@ public class TEBlockStateProvider extends BlockStateProvider {
         metalBlock(TEBlocks.UNOBTAINIUM_BLOCK);
         metalBlock(TEBlocks.MYTHICAN_BLOCK);
         metalBlock(TEBlocks.STAR_PLATINUM_BLOCK);
+        metalBlock(TEBlocks.BELL_METAL_BLOCK);
     }
 
     private void metalBlock(RegistryObject<Block> block) {

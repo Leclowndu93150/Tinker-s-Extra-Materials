@@ -87,5 +87,74 @@ public class TEMaterialStatsProvider extends AbstractMaterialStatsDataProvider {
             new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 590, 0f, 4f, 0f),
             StatlessMaterialStats.MAILLE
         );
+
+        addMaterialStats(TEMaterialIds.RUNICAN,
+            new HeadMaterialStats(920, 5f, DIAMOND, 2.25f),
+            HandleMaterialStats.multipliers()
+                .durability(1.1f)
+                .attackDamage(1.1f)
+                .attackSpeed(0.9f)
+                .miningSpeed(0.95f)
+                .build(),
+            new LimbMaterialStats(920, -0.15f, -0.05f, 0.25f),
+            new GripMaterialStats(0.1f, 0.1f, 2f)
+        );
+
+        addMaterialStats(TEMaterialIds.PILLAGUM,
+            new HeadMaterialStats(620, 7.5f, GOLD, 3.25f),
+            HandleMaterialStats.multipliers()
+                .durability(0.95f)
+                .attackDamage(1.2f)
+                .attackSpeed(0.9f)
+                .miningSpeed(1.1f)
+                .build(),
+            new LimbMaterialStats(620, 0.15f, -0.3f, 0.15f),
+            new GripMaterialStats(0.05f, 0.15f, 2.5f)
+        );
+
+        addMaterialStats(TEMaterialIds.MATERIAL_000,
+            new HeadMaterialStats(25, 14f, NETHERITE, 5f),
+            HandleMaterialStats.multipliers()
+                .durability(0.4f)
+                .attackDamage(1.3f)
+                .attackSpeed(1.45f)
+                .miningSpeed(1.5f)
+                .build(),
+            new LimbMaterialStats(25, 0.7f, -0.1f, -0.35f),
+            new GripMaterialStats(-0.4f, -0.2f, 4.5f)
+        );
+
+        addMaterialStats(TEMaterialIds.BELL_METAL,
+            new HeadMaterialStats(715, 5f, DIAMOND, 2.5f),
+            HandleMaterialStats.multipliers()
+                .durability(1.1f)
+                .attackDamage(1.1f)
+                .attackSpeed(1.0f)
+                .miningSpeed(0.95f)
+                .build(),
+            new LimbMaterialStats(715, -0.15f, 0.1f, 0.1f),
+            new GripMaterialStats(0.1f, 0.05f, 2f)
+        );
+
+        addMaterialStats(TEMaterialIds.BELL_METAL,
+            new PlatingMaterialStats(PlatingMaterialStats.HELMET, 325, 2f, 1f, 0.5f),
+            new PlatingMaterialStats(PlatingMaterialStats.CHESTPLATE, 465, 5f, 1f, 0.5f),
+            new PlatingMaterialStats(PlatingMaterialStats.LEGGINGS, 445, 3f, 1f, 0.5f),
+            new PlatingMaterialStats(PlatingMaterialStats.BOOTS, 415, 1f, 1f, 0.5f),
+            new PlatingMaterialStats(PlatingMaterialStats.SHIELD, 515, 0f, 1f, 0.5f),
+            StatlessMaterialStats.MAILLE
+        );
+
+        addMaterialStats(TEMaterialIds.EVOLITE,
+            new HeadMaterialStats(530, 6.5f, DIAMOND, 3.5f),
+            HandleMaterialStats.multipliers()
+                .durability(0.8f)
+                .attackDamage(1.05f)
+                .attackSpeed(1.3f)
+                .miningSpeed(0.95f)
+                .build(),
+            new LimbMaterialStats(530, 0.3f, -0.1f, -0.25f),
+            new GripMaterialStats(-0.1f, -0.15f, 2.5f)
+        );
     }
 }

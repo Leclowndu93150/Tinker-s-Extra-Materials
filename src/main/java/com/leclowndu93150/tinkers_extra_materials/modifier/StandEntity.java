@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import com.leclowndu93150.tinkers_extra_materials.config.TEMConfig;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEEntities;
 
 import javax.annotation.Nullable;
@@ -40,6 +41,12 @@ public class StandEntity extends PathfinderMob {
         this.setPos(owner.getX(), owner.getY(), owner.getZ());
         this.entityData.set(OWNER_UUID, Optional.of(owner.getUUID()));
         this.attackTarget = target;
+        this.lifeTicks = TEMConfig.STAND_LIFETIME.get();
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(TEMConfig.STAND_HEALTH.get());
+        this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(TEMConfig.STAND_DAMAGE.get());
+        this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(TEMConfig.STAND_SPEED.get());
+        this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(TEMConfig.STAND_SEARCH_RANGE.get());
+        this.setHealth(this.getMaxHealth());
         if (target instanceof LivingEntity living) {
             this.setTarget(living);
         }
@@ -94,7 +101,8 @@ public class StandEntity extends PathfinderMob {
             }
 
             LivingEntity owner = getOwner();
-            if (owner != null && this.distanceToSqr(owner) > 64 * 64) {
+            int leashRange = TEMConfig.STAND_LEASH_RANGE.get();
+            if (owner != null && this.distanceToSqr(owner) > leashRange * leashRange) {
                 this.teleportTo(owner.getX(), owner.getY(), owner.getZ());
             }
         }

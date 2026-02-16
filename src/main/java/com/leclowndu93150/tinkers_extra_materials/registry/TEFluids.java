@@ -19,6 +19,7 @@ public class TEFluids {
     public static FlowingFluidObject<ForgeFlowingFluid> MOLTEN_UNOBTAINIUM;
     public static FlowingFluidObject<ForgeFlowingFluid> MOLTEN_MYTHICAN;
     public static FlowingFluidObject<ForgeFlowingFluid> MOLTEN_STAR_PLATINUM;
+    public static FlowingFluidObject<ForgeFlowingFluid> MOLTEN_BELL_METAL;
 
     public static void register(IEventBus modEventBus) {
         MOLTEN_UNOBTAINIUM = FLUIDS.register("molten_unobtainium")
@@ -38,6 +39,13 @@ public class TEFluids {
         MOLTEN_STAR_PLATINUM = FLUIDS.register("molten_star_platinum")
             .type(hotBuilder("molten_star_platinum").temperature(1500).lightLevel(12))
             .block(BurningLiquidBlock.createBurning(MapColor.COLOR_PURPLE, 12, 10, 7.0F))
+            .bucket()
+            .commonTag()
+            .flowing();
+
+        MOLTEN_BELL_METAL = FLUIDS.register("molten_bell_metal")
+            .type(hotBuilder("molten_bell_metal").temperature(1000).lightLevel(10))
+            .block(BurningLiquidBlock.createBurning(MapColor.GOLD, 10, 10, 6.0F))
             .bucket()
             .commonTag()
             .flowing();

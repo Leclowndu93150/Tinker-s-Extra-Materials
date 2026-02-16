@@ -30,11 +30,12 @@ public class TEBlockLootProvider extends LootTableProvider {
             dropSelf(TEBlocks.UNOBTAINIUM_BLOCK.get());
             dropSelf(TEBlocks.MYTHICAN_BLOCK.get());
             dropSelf(TEBlocks.STAR_PLATINUM_BLOCK.get());
+            dropSelf(TEBlocks.BELL_METAL_BLOCK.get());
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
-            return List.of(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get());
+            return List.of(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get(), TEBlocks.BELL_METAL_BLOCK.get());
         }
     }
 }

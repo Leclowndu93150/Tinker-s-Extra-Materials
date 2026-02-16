@@ -13,4 +13,8 @@ public final class TEModifierIds {
 
     public static final ModifierId POTENTIAL = id("potential");
     public static final ModifierId STAND_GROUND = id("stand_ground");
+    public static final ModifierId ENGRAVING = id("engraving");
+    public static final ModifierId UNSTABLE = id("unstable");
+    public static final ModifierId RESONANCE = id("resonance");
+    public static final ModifierId EVOLVING = id("evolving");
 }

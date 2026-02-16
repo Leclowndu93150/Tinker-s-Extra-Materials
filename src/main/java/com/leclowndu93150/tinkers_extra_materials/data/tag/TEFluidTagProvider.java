@@ -23,6 +23,7 @@ public class TEFluidTagProvider extends FluidTagsProvider {
         fluidTag(TEFluids.MOLTEN_UNOBTAINIUM);
         fluidTag(TEFluids.MOLTEN_MYTHICAN);
         fluidTag(TEFluids.MOLTEN_STAR_PLATINUM);
+        fluidTag(TEFluids.MOLTEN_BELL_METAL);
     }
 
     private void fluidTag(FlowingFluidObject<?> fluid) {

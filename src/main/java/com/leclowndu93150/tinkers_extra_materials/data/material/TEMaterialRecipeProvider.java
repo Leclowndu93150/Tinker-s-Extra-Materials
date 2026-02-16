@@ -16,9 +16,14 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.mantle.recipe.data.ItemNameIngredient;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import slimeknights.mantle.recipe.data.IRecipeHelper;
 import slimeknights.mantle.recipe.helper.FluidOutput;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
@@ -48,10 +53,12 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         addCraftingRecipes(consumer);
+        addCastingCraftRecipes(consumer);
         addMaterialRecipes(consumer);
         addSmelteryRecipes(consumer);
         addFluidRecipes(consumer);
         addAlloyRecipes(consumer);
+        addEvoliteRecipes(consumer);
     }
 
     private void addCraftingRecipes(Consumer<FinishedRecipe> consumer) {
@@ -83,6 +90,7 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
 
         metalCraftingRecipes(consumer, "mythican", TEItems.MYTHICAN_INGOT, TEItems.MYTHICAN_NUGGET, TEBlocks.MYTHICAN_BLOCK_ITEM);
         metalCraftingRecipes(consumer, "star_platinum", TEItems.STAR_PLATINUM_INGOT, TEItems.STAR_PLATINUM_NUGGET, TEBlocks.STAR_PLATINUM_BLOCK_ITEM);
+        metalCraftingRecipes(consumer, "bell_metal", TEItems.BELL_METAL_INGOT, TEItems.BELL_METAL_NUGGET, TEBlocks.BELL_METAL_BLOCK_ITEM);
     }
 
     private void metalCraftingRecipes(Consumer<FinishedRecipe> consumer, String name,
@@ -110,6 +118,26 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .save(consumer, new ResourceLocation(TinkersExtraMaterials.MODID, name + "_nugget_from_ingot"));
     }
 
+    private void addCastingCraftRecipes(Consumer<FinishedRecipe> consumer) {
+        ItemCastingRecipeBuilder.tableRecipe(TEItems.RUNICAN.get())
+            .setFluid(tcFluidTag("molten_diamond"), FluidValues.GEM)
+            .setCoolingTime(800, FluidValues.GEM)
+            .setCast(Ingredient.of(Items.CLAY_BALL), true)
+            .save(consumer, location("smeltery/casting/runican"));
+
+        ItemCastingRecipeBuilder.tableRecipe(TEItems.PILLAGUM.get())
+            .setFluid(tcFluidTag("molten_emerald"), FluidValues.GEM * 2)
+            .setCoolingTime(800, FluidValues.GEM * 2)
+            .setCast(Ingredient.of(Items.LAPIS_LAZULI), true)
+            .save(consumer, location("smeltery/casting/pillagum"));
+
+        ItemCastingRecipeBuilder.tableRecipe(TEItems.MATERIAL_000.get())
+            .setFluid(tcFluidTag("molten_debris"), FluidValues.INGOT)
+            .setCoolingTime(800, FluidValues.INGOT)
+            .setCast(Ingredient.of(Items.ENDER_EYE), true)
+            .save(consumer, location("smeltery/casting/material_000"));
+    }
+
     private void addMaterialRecipes(Consumer<FinishedRecipe> consumer) {
         String folder = "tools/materials/";
         materialRecipe(consumer, TEMaterialIds.UNOBTAINIUM, Ingredient.of(TEItems.UNOBTAINIUM_INGOT.get()), 1, 1, folder + "unobtainium/ingot");
@@ -123,6 +151,14 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
         materialRecipe(consumer, TEMaterialIds.STAR_PLATINUM, Ingredient.of(TEItems.STAR_PLATINUM_INGOT.get()), 1, 1, folder + "star_platinum/ingot");
         materialRecipe(consumer, TEMaterialIds.STAR_PLATINUM, Ingredient.of(TEItems.STAR_PLATINUM_NUGGET.get()), 1, 9, folder + "star_platinum/nugget");
         materialRecipe(consumer, TEMaterialIds.STAR_PLATINUM, Ingredient.of(TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get()), 9, 1, folder + "star_platinum/block");
+
+        materialRecipe(consumer, TEMaterialIds.BELL_METAL, Ingredient.of(TEItems.BELL_METAL_INGOT.get()), 1, 1, folder + "bell_metal/ingot");
+        materialRecipe(consumer, TEMaterialIds.BELL_METAL, Ingredient.of(TEItems.BELL_METAL_NUGGET.get()), 1, 9, folder + "bell_metal/nugget");
+        materialRecipe(consumer, TEMaterialIds.BELL_METAL, Ingredient.of(TEBlocks.BELL_METAL_BLOCK_ITEM.get()), 9, 1, folder + "bell_metal/block");
+
+        materialRecipe(consumer, TEMaterialIds.RUNICAN, Ingredient.of(TEItems.RUNICAN.get()), 1, 1, folder + "runican");
+        materialRecipe(consumer, TEMaterialIds.PILLAGUM, Ingredient.of(TEItems.PILLAGUM.get()), 1, 1, folder + "pillagum");
+        materialRecipe(consumer, TEMaterialIds.MATERIAL_000, Ingredient.of(TEItems.MATERIAL_000.get()), 1, 1, folder + "material_000");
     }
 
     private void addSmelteryRecipes(Consumer<FinishedRecipe> consumer) {
@@ -154,6 +190,15 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
         MaterialMeltingRecipeBuilder.material(TEMaterialIds.STAR_PLATINUM, 1500,
                 FluidOutput.fromTag(moltenStarPlatinum, FluidValues.INGOT))
             .save(consumer, location(folder + "melting/star_platinum"));
+
+        TagKey<Fluid> moltenBellMetal = forgeFluidTag("molten_bell_metal");
+        MaterialFluidRecipeBuilder.material(TEMaterialIds.BELL_METAL)
+            .setFluid(moltenBellMetal, FluidValues.INGOT)
+            .setTemperature(1000)
+            .save(consumer, location(folder + "casting/bell_metal"));
+        MaterialMeltingRecipeBuilder.material(TEMaterialIds.BELL_METAL, 1000,
+                FluidOutput.fromTag(moltenBellMetal, FluidValues.INGOT))
+            .save(consumer, location(folder + "melting/bell_metal"));
     }
 
     private void addFluidRecipes(Consumer<FinishedRecipe> consumer) {
@@ -215,6 +260,9 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
 
         addMetalFluidRecipes(consumer, "star_platinum", TEItems.STAR_PLATINUM_INGOT, TEItems.STAR_PLATINUM_NUGGET,
             TEBlocks.STAR_PLATINUM_BLOCK_ITEM, TEFluids.MOLTEN_STAR_PLATINUM, 1500);
+
+        addMetalFluidRecipes(consumer, "bell_metal", TEItems.BELL_METAL_INGOT, TEItems.BELL_METAL_NUGGET,
+            TEBlocks.BELL_METAL_BLOCK_ITEM, TEFluids.MOLTEN_BELL_METAL, 1000);
     }
 
     private void addMetalFluidRecipes(Consumer<FinishedRecipe> consumer, String name,
@@ -265,6 +313,59 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .addInput(FluidIngredient.of(tcFluidTag("molten_amethyst"), FluidValues.GEM * 2))
             .addInput(FluidIngredient.of(tcFluidTag("molten_debris"), FluidValues.INGOT))
             .save(consumer, location("smeltery/alloying/molten_star_platinum"));
+
+        AlloyRecipeBuilder.alloy(TEFluids.MOLTEN_BELL_METAL, FluidValues.INGOT * 2)
+            .addInput(FluidIngredient.of(forgeFluidTag("molten_tin"), FluidValues.INGOT))
+            .addInput(FluidIngredient.of(forgeFluidTag("molten_nickel"), FluidValues.INGOT))
+            .save(consumer, location("smeltery/alloying/molten_bell_metal"));
+    }
+
+    private void addEvoliteRecipes(Consumer<FinishedRecipe> consumer) {
+        Consumer<FinishedRecipe> cbConsumer = withCondition(consumer, new ModLoadedCondition("cobblemon"));
+        String folder = "tools/materials/";
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, TEItems.EVOLITE.get())
+            .requires(cobblemonIngredient("fire_stone"))
+            .requires(cobblemonIngredient("water_stone"))
+            .requires(cobblemonIngredient("thunder_stone"))
+            .requires(cobblemonIngredient("leaf_stone"))
+            .requires(cobblemonIngredient("moon_stone"))
+            .requires(cobblemonIngredient("sun_stone"))
+            .requires(cobblemonIngredient("shiny_stone"))
+            .requires(cobblemonIngredient("dusk_stone"))
+            .requires(cobblemonIngredient("dawn_stone"))
+            .unlockedBy("has_fire_stone", has(Items.EMERALD))
+            .save(cbConsumer, location("evolite_from_stones"));
+
+        materialRecipe(cbConsumer, TEMaterialIds.EVOLITE, Ingredient.of(TEItems.EVOLITE.get()), 1, 1, folder + "evolite");
+
+        saveRawShapelessRecipe(cbConsumer, location("rare_candy_from_evolite"), "cobblemon:rare_candy", 1,
+            Ingredient.of(TEItems.EVOLITE.get()), Ingredient.of(Items.EMERALD));
+    }
+
+    private Ingredient cobblemonIngredient(String name) {
+        return ItemNameIngredient.from(new ResourceLocation("cobblemon", name));
+    }
+
+    private void saveRawShapelessRecipe(Consumer<FinishedRecipe> consumer, ResourceLocation id, String resultItem, int count, Ingredient... ingredients) {
+        consumer.accept(new FinishedRecipe() {
+            @Override
+            public void serializeRecipeData(JsonObject json) {
+                JsonArray arr = new JsonArray();
+                for (Ingredient ing : ingredients) {
+                    arr.add(ing.toJson());
+                }
+                json.add("ingredients", arr);
+                JsonObject result = new JsonObject();
+                result.addProperty("item", resultItem);
+                result.addProperty("count", count);
+                json.add("result", result);
+            }
+            @Override public ResourceLocation getId() { return id; }
+            @Override public RecipeSerializer<?> getType() { return RecipeSerializer.SHAPELESS_RECIPE; }
+            @Override public JsonObject serializeAdvancement() { return null; }
+            @Override public ResourceLocation getAdvancementId() { return null; }
+        });
     }
 
     private TagKey<Fluid> forgeFluidTag(String path) {

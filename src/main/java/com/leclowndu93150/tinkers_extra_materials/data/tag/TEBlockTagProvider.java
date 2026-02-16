@@ -19,8 +19,8 @@ public class TEBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get());
-        tag(BlockTags.NEEDS_DIAMOND_TOOL).add(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get());
-        tag(Tags.Blocks.STORAGE_BLOCKS).add(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get(), TEBlocks.BELL_METAL_BLOCK.get());
+        tag(BlockTags.NEEDS_DIAMOND_TOOL).add(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get(), TEBlocks.BELL_METAL_BLOCK.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS).add(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get(), TEBlocks.BELL_METAL_BLOCK.get());
     }
 }

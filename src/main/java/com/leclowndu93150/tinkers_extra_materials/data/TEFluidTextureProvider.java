@@ -19,6 +19,7 @@ public class TEFluidTextureProvider extends AbstractFluidTextureProvider {
         tintedMolten(TEFluids.MOLTEN_UNOBTAINIUM).color(0xFF100F16);
         tintedMolten(TEFluids.MOLTEN_MYTHICAN).color(0xFF71A976);
         tintedMolten(TEFluids.MOLTEN_STAR_PLATINUM).color(0xFF4F306C);
+        tintedMolten(TEFluids.MOLTEN_BELL_METAL).color(0xFF876D48);
     }
 
     private FluidTexture.Builder tintedMolten(FlowingFluidObject<?> fluid) {

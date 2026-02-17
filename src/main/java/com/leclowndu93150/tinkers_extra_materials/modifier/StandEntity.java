@@ -13,6 +13,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LeapAtTargetGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -29,25 +31,22 @@ public class StandEntity extends PathfinderMob {
         SynchedEntityData.defineId(StandEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 
     private int lifeTicks = 200;
-    @Nullable
-    private Entity attackTarget;
 
     public StandEntity(EntityType<? extends PathfinderMob> type, Level level) {
         super(type, level);
     }
 
-    public StandEntity(Level level, LivingEntity owner, Entity target) {
+    public StandEntity(Level level, LivingEntity owner, Entity initialTarget) {
         this(TEEntities.STAND.get(), level);
         this.setPos(owner.getX(), owner.getY(), owner.getZ());
         this.entityData.set(OWNER_UUID, Optional.of(owner.getUUID()));
-        this.attackTarget = target;
         this.lifeTicks = TEMConfig.STAND_LIFETIME.get();
         this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(TEMConfig.STAND_HEALTH.get());
         this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(TEMConfig.STAND_DAMAGE.get());
         this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(TEMConfig.STAND_SPEED.get());
         this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(TEMConfig.STAND_SEARCH_RANGE.get());
         this.setHealth(this.getMaxHealth());
-        if (target instanceof LivingEntity living) {
+        if (initialTarget instanceof LivingEntity living) {
             this.setTarget(living);
         }
     }
@@ -56,7 +55,7 @@ public class StandEntity extends PathfinderMob {
         return PathfinderMob.createMobAttributes()
             .add(Attributes.MAX_HEALTH, 20.0)
             .add(Attributes.ATTACK_DAMAGE, 6.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.1)
+            .add(Attributes.MOVEMENT_SPEED, 0.35)
             .add(Attributes.FOLLOW_RANGE, 32.0)
             .add(Attributes.ATTACK_SPEED, 4.0);
     }
@@ -69,16 +68,9 @@ public class StandEntity extends PathfinderMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));
-    }
-
-    @Override
-    public boolean doHurtTarget(Entity target) {
-        boolean hit = super.doHurtTarget(target);
-        if (hit) {
-            this.swing(InteractionHand.MAIN_HAND);
-        }
-        return hit;
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new LeapAtTargetGoal(this, 0.4F));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, true));
     }
 
     @Override
@@ -91,21 +83,36 @@ public class StandEntity extends PathfinderMob {
         }
 
         if (!this.level().isClientSide) {
-            if (attackTarget != null && attackTarget.isAlive()) {
-                if (attackTarget instanceof LivingEntity living) {
-                    this.setTarget(living);
-                }
-                this.getNavigation().moveTo(attackTarget, 1.0);
-            } else {
+            LivingEntity owner = getOwner();
+            if (owner == null || !owner.isAlive()) {
                 this.discard();
+                return;
             }
 
-            LivingEntity owner = getOwner();
+            LivingEntity ownerTarget = owner.getLastHurtMob();
+            if (ownerTarget != null && ownerTarget.isAlive() && ownerTarget != this) {
+                this.setTarget(ownerTarget);
+            } else {
+                LivingEntity ownerAttacker = owner.getLastHurtByMob();
+                if (ownerAttacker != null && ownerAttacker.isAlive() && ownerAttacker != this) {
+                    this.setTarget(ownerAttacker);
+                }
+            }
+
             int leashRange = TEMConfig.STAND_LEASH_RANGE.get();
-            if (owner != null && this.distanceToSqr(owner) > leashRange * leashRange) {
+            if (this.distanceToSqr(owner) > leashRange * leashRange) {
                 this.teleportTo(owner.getX(), owner.getY(), owner.getZ());
             }
         }
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity target) {
+        boolean hit = super.doHurtTarget(target);
+        if (hit) {
+            this.swing(InteractionHand.MAIN_HAND);
+        }
+        return hit;
     }
 
     @Nullable
@@ -145,11 +152,6 @@ public class StandEntity extends PathfinderMob {
     }
 
     @Override
-    public boolean isNoGravity() {
-        return false;
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("LifeTicks", lifeTicks);
@@ -164,4 +166,5 @@ public class StandEntity extends PathfinderMob {
             entityData.set(OWNER_UUID, Optional.of(tag.getUUID("OwnerUUID")));
         }
     }
+
 }

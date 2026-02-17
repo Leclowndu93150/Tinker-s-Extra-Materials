@@ -1,7 +1,6 @@
 package com.leclowndu93150.tinkers_extra_materials.data.tag;
 
 import com.leclowndu93150.tinkers_extra_materials.TinkersExtraMaterials;
-import com.leclowndu93150.tinkers_extra_materials.registry.TEBlocks;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -22,6 +21,5 @@ public class TEItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(Tags.Items.INGOTS).add(TEItems.UNOBTAINIUM_INGOT.get(), TEItems.MYTHICAN_INGOT.get(), TEItems.STAR_PLATINUM_INGOT.get(), TEItems.BELL_METAL_INGOT.get());
         tag(Tags.Items.NUGGETS).add(TEItems.UNOBTAINIUM_NUGGET.get(), TEItems.MYTHICAN_NUGGET.get(), TEItems.STAR_PLATINUM_NUGGET.get(), TEItems.BELL_METAL_NUGGET.get());
-        tag(Tags.Items.STORAGE_BLOCKS).add(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get(), TEBlocks.MYTHICAN_BLOCK_ITEM.get(), TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get(), TEBlocks.BELL_METAL_BLOCK_ITEM.get());
     }
 }

@@ -1,7 +1,6 @@
 package com.leclowndu93150.tinkers_extra_materials.data.material;
 
 import com.leclowndu93150.tinkers_extra_materials.TinkersExtraMaterials;
-import com.leclowndu93150.tinkers_extra_materials.registry.TEBlocks;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEFluids;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEItems;
 import net.minecraft.core.registries.Registries;
@@ -62,19 +61,6 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
     }
 
     private void addCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TEBlocks.UNOBTAINIUM_BLOCK.get())
-            .pattern("###")
-            .pattern("###")
-            .pattern("###")
-            .define('#', TEItems.UNOBTAINIUM_INGOT.get())
-            .unlockedBy("has_ingot", has(TEItems.UNOBTAINIUM_INGOT.get()))
-            .save(consumer, new ResourceLocation(TinkersExtraMaterials.MODID, "unobtainium_block_from_ingots"));
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, TEItems.UNOBTAINIUM_INGOT.get(), 9)
-            .requires(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get())
-            .unlockedBy("has_block", has(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get()))
-            .save(consumer, new ResourceLocation(TinkersExtraMaterials.MODID, "unobtainium_ingot_from_block"));
-
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TEItems.UNOBTAINIUM_INGOT.get())
             .pattern("###")
             .pattern("###")
@@ -88,24 +74,13 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .unlockedBy("has_ingot", has(TEItems.UNOBTAINIUM_INGOT.get()))
             .save(consumer, new ResourceLocation(TinkersExtraMaterials.MODID, "unobtainium_nugget_from_ingot"));
 
-        metalCraftingRecipes(consumer, "mythican", TEItems.MYTHICAN_INGOT, TEItems.MYTHICAN_NUGGET, TEBlocks.MYTHICAN_BLOCK_ITEM);
-        metalCraftingRecipes(consumer, "star_platinum", TEItems.STAR_PLATINUM_INGOT, TEItems.STAR_PLATINUM_NUGGET, TEBlocks.STAR_PLATINUM_BLOCK_ITEM);
-        metalCraftingRecipes(consumer, "bell_metal", TEItems.BELL_METAL_INGOT, TEItems.BELL_METAL_NUGGET, TEBlocks.BELL_METAL_BLOCK_ITEM);
+        metalCraftingRecipes(consumer, "mythican", TEItems.MYTHICAN_INGOT, TEItems.MYTHICAN_NUGGET);
+        metalCraftingRecipes(consumer, "star_platinum", TEItems.STAR_PLATINUM_INGOT, TEItems.STAR_PLATINUM_NUGGET);
+        metalCraftingRecipes(consumer, "bell_metal", TEItems.BELL_METAL_INGOT, TEItems.BELL_METAL_NUGGET);
     }
 
     private void metalCraftingRecipes(Consumer<FinishedRecipe> consumer, String name,
-                                       RegistryObject<Item> ingot, RegistryObject<Item> nugget, RegistryObject<Item> blockItem) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockItem.get())
-            .pattern("###").pattern("###").pattern("###")
-            .define('#', ingot.get())
-            .unlockedBy("has_ingot", has(ingot.get()))
-            .save(consumer, new ResourceLocation(TinkersExtraMaterials.MODID, name + "_block_from_ingots"));
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingot.get(), 9)
-            .requires(blockItem.get())
-            .unlockedBy("has_block", has(blockItem.get()))
-            .save(consumer, new ResourceLocation(TinkersExtraMaterials.MODID, name + "_ingot_from_block"));
-
+                                       RegistryObject<Item> ingot, RegistryObject<Item> nugget) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ingot.get())
             .pattern("###").pattern("###").pattern("###")
             .define('#', nugget.get())
@@ -142,19 +117,15 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
         String folder = "tools/materials/";
         materialRecipe(consumer, TEMaterialIds.UNOBTAINIUM, Ingredient.of(TEItems.UNOBTAINIUM_INGOT.get()), 1, 1, folder + "unobtainium/ingot");
         materialRecipe(consumer, TEMaterialIds.UNOBTAINIUM, Ingredient.of(TEItems.UNOBTAINIUM_NUGGET.get()), 1, 9, folder + "unobtainium/nugget");
-        materialRecipe(consumer, TEMaterialIds.UNOBTAINIUM, Ingredient.of(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get()), 9, 1, folder + "unobtainium/block");
 
         materialRecipe(consumer, TEMaterialIds.MYTHICAN, Ingredient.of(TEItems.MYTHICAN_INGOT.get()), 1, 1, folder + "mythican/ingot");
         materialRecipe(consumer, TEMaterialIds.MYTHICAN, Ingredient.of(TEItems.MYTHICAN_NUGGET.get()), 1, 9, folder + "mythican/nugget");
-        materialRecipe(consumer, TEMaterialIds.MYTHICAN, Ingredient.of(TEBlocks.MYTHICAN_BLOCK_ITEM.get()), 9, 1, folder + "mythican/block");
 
         materialRecipe(consumer, TEMaterialIds.STAR_PLATINUM, Ingredient.of(TEItems.STAR_PLATINUM_INGOT.get()), 1, 1, folder + "star_platinum/ingot");
         materialRecipe(consumer, TEMaterialIds.STAR_PLATINUM, Ingredient.of(TEItems.STAR_PLATINUM_NUGGET.get()), 1, 9, folder + "star_platinum/nugget");
-        materialRecipe(consumer, TEMaterialIds.STAR_PLATINUM, Ingredient.of(TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get()), 9, 1, folder + "star_platinum/block");
 
         materialRecipe(consumer, TEMaterialIds.BELL_METAL, Ingredient.of(TEItems.BELL_METAL_INGOT.get()), 1, 1, folder + "bell_metal/ingot");
         materialRecipe(consumer, TEMaterialIds.BELL_METAL, Ingredient.of(TEItems.BELL_METAL_NUGGET.get()), 1, 9, folder + "bell_metal/nugget");
-        materialRecipe(consumer, TEMaterialIds.BELL_METAL, Ingredient.of(TEBlocks.BELL_METAL_BLOCK_ITEM.get()), 9, 1, folder + "bell_metal/block");
 
         materialRecipe(consumer, TEMaterialIds.RUNICAN, Ingredient.of(TEItems.RUNICAN.get()), 1, 1, folder + "runican");
         materialRecipe(consumer, TEMaterialIds.PILLAGUM, Ingredient.of(TEItems.PILLAGUM.get()), 1, 1, folder + "pillagum");
@@ -218,12 +189,6 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
                 temperature, 1 / 3f)
             .save(consumer, location(meltingFolder + "nugget"));
 
-        MeltingRecipeBuilder.melting(
-                Ingredient.of(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get()),
-                TEFluids.MOLTEN_UNOBTAINIUM.result(FluidValues.METAL_BLOCK),
-                temperature, 3.0f)
-            .save(consumer, location(meltingFolder + "block"));
-
         ItemCastingRecipeBuilder.tableRecipe(TEItems.UNOBTAINIUM_INGOT.get())
             .setFluidAndTime(TEFluids.MOLTEN_UNOBTAINIUM, FluidValues.INGOT)
             .setCast(TinkerSmeltery.ingotCast.getMultiUseTag(), false)
@@ -243,10 +208,6 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .setFluidAndTime(TEFluids.MOLTEN_UNOBTAINIUM, FluidValues.NUGGET)
             .setCast(TinkerSmeltery.nuggetCast.getSingleUseTag(), true)
             .save(consumer, location(castingFolder + "nugget_sand_cast"));
-
-        ItemCastingRecipeBuilder.basinRecipe(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get())
-            .setFluidAndTime(TEFluids.MOLTEN_UNOBTAINIUM, FluidValues.METAL_BLOCK)
-            .save(consumer, location(castingFolder + "block"));
 
         TagKey<Fluid> moltenNetherite = forgeFluidTag("molten_netherite");
         ItemCastingRecipeBuilder.tableRecipe(TEItems.UNOBTAINIUM_INGOT.get())
@@ -256,18 +217,17 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .save(consumer, location("smeltery/casting/unobtainium_from_netherite"));
 
         addMetalFluidRecipes(consumer, "mythican", TEItems.MYTHICAN_INGOT, TEItems.MYTHICAN_NUGGET,
-            TEBlocks.MYTHICAN_BLOCK_ITEM, TEFluids.MOLTEN_MYTHICAN, 1500);
+            TEFluids.MOLTEN_MYTHICAN, 1500);
 
         addMetalFluidRecipes(consumer, "star_platinum", TEItems.STAR_PLATINUM_INGOT, TEItems.STAR_PLATINUM_NUGGET,
-            TEBlocks.STAR_PLATINUM_BLOCK_ITEM, TEFluids.MOLTEN_STAR_PLATINUM, 1500);
+            TEFluids.MOLTEN_STAR_PLATINUM, 1500);
 
         addMetalFluidRecipes(consumer, "bell_metal", TEItems.BELL_METAL_INGOT, TEItems.BELL_METAL_NUGGET,
-            TEBlocks.BELL_METAL_BLOCK_ITEM, TEFluids.MOLTEN_BELL_METAL, 1000);
+            TEFluids.MOLTEN_BELL_METAL, 1000);
     }
 
     private void addMetalFluidRecipes(Consumer<FinishedRecipe> consumer, String name,
                                        RegistryObject<Item> ingot, RegistryObject<Item> nugget,
-                                       RegistryObject<Item> blockItem,
                                        slimeknights.mantle.registration.object.FlowingFluidObject<?> fluid,
                                        int temperature) {
         String meltingFolder = "smeltery/melting/metal/" + name + "/";
@@ -277,8 +237,6 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .save(consumer, location(meltingFolder + "ingot"));
         MeltingRecipeBuilder.melting(Ingredient.of(nugget.get()), fluid.result(FluidValues.NUGGET), temperature, 1 / 3f)
             .save(consumer, location(meltingFolder + "nugget"));
-        MeltingRecipeBuilder.melting(Ingredient.of(blockItem.get()), fluid.result(FluidValues.METAL_BLOCK), temperature, 3.0f)
-            .save(consumer, location(meltingFolder + "block"));
 
         ItemCastingRecipeBuilder.tableRecipe(ingot.get())
             .setFluidAndTime(fluid, FluidValues.INGOT)
@@ -296,9 +254,6 @@ public class TEMaterialRecipeProvider extends RecipeProvider implements IConditi
             .setFluidAndTime(fluid, FluidValues.NUGGET)
             .setCast(TinkerSmeltery.nuggetCast.getSingleUseTag(), true)
             .save(consumer, location(castingFolder + "nugget_sand_cast"));
-        ItemCastingRecipeBuilder.basinRecipe(blockItem.get())
-            .setFluidAndTime(fluid, FluidValues.METAL_BLOCK)
-            .save(consumer, location(castingFolder + "block"));
     }
 
     private void addAlloyRecipes(Consumer<FinishedRecipe> consumer) {

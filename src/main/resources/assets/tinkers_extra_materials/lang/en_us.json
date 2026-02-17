@@ -2,14 +2,12 @@
   "material.tinkers_extra_materials.unobtainium": "Unobtainium",
   "item.tinkers_extra_materials.unobtainium_ingot": "Unobtainium Ingot",
   "item.tinkers_extra_materials.unobtainium_nugget": "Unobtainium Nugget",
-  "block.tinkers_extra_materials.unobtainium_block": "Block of Unobtainium",
   "fluid.tinkers_extra_materials.molten_unobtainium": "Molten Unobtainium",
   "item.tinkers_extra_materials.molten_unobtainium_bucket": "Molten Unobtainium Bucket",
 
   "material.tinkers_extra_materials.mythican": "Mythican",
   "item.tinkers_extra_materials.mythican_ingot": "Mythican Ingot",
   "item.tinkers_extra_materials.mythican_nugget": "Mythican Nugget",
-  "block.tinkers_extra_materials.mythican_block": "Block of Mythican",
   "fluid.tinkers_extra_materials.molten_mythican": "Molten Mythican",
   "item.tinkers_extra_materials.molten_mythican_bucket": "Molten Mythican Bucket",
 
@@ -20,7 +18,6 @@
   "material.tinkers_extra_materials.star_platinum": "Star Platinum",
   "item.tinkers_extra_materials.star_platinum_ingot": "Star Platinum Ingot",
   "item.tinkers_extra_materials.star_platinum_nugget": "Star Platinum Nugget",
-  "block.tinkers_extra_materials.star_platinum_block": "Block of Star Platinum",
   "fluid.tinkers_extra_materials.molten_star_platinum": "Molten Star Platinum",
   "item.tinkers_extra_materials.molten_star_platinum_bucket": "Molten Star Platinum Bucket",
 
@@ -44,7 +41,6 @@
   "material.tinkers_extra_materials.bell_metal": "Bell Metal",
   "item.tinkers_extra_materials.bell_metal_ingot": "Bell Metal Ingot",
   "item.tinkers_extra_materials.bell_metal_nugget": "Bell Metal Nugget",
-  "block.tinkers_extra_materials.bell_metal_block": "Block of Bell Metal",
   "fluid.tinkers_extra_materials.molten_bell_metal": "Molten Bell Metal",
   "item.tinkers_extra_materials.molten_bell_metal_bucket": "Molten Bell Metal Bucket",
 

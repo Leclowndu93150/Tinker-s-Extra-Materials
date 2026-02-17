@@ -1,6 +1,5 @@
 package com.leclowndu93150.tinkers_extra_materials.data;
 
-import com.leclowndu93150.tinkers_extra_materials.registry.TEBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
@@ -27,15 +26,11 @@ public class TEBlockLootProvider extends LootTableProvider {
 
         @Override
         protected void generate() {
-            dropSelf(TEBlocks.UNOBTAINIUM_BLOCK.get());
-            dropSelf(TEBlocks.MYTHICAN_BLOCK.get());
-            dropSelf(TEBlocks.STAR_PLATINUM_BLOCK.get());
-            dropSelf(TEBlocks.BELL_METAL_BLOCK.get());
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
-            return List.of(TEBlocks.UNOBTAINIUM_BLOCK.get(), TEBlocks.MYTHICAN_BLOCK.get(), TEBlocks.STAR_PLATINUM_BLOCK.get(), TEBlocks.BELL_METAL_BLOCK.get());
+            return List.of();
         }
     }
 }

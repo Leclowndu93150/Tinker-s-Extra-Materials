@@ -103,17 +103,18 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
                 .addARGB(255, 0xFFC2B78F)
                 .build());
 
-        ResourceLocation evoliteTex = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/evolite");
+        ResourceLocation evoliteBase = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/evolite_base");
+        ResourceLocation evoliteHighlight = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/evolite_highlight");
         buildMaterial(TEMaterialIds.EVOLITE)
             .meleeHarvest().ranged()
             .fallbacks("crystal")
             .transformer(GreyToSpriteTransformer.builderFromBlack()
-                .addTexture(63, evoliteTex, 0xFF404040)
-                .addTexture(102, evoliteTex, 0xFF808080)
-                .addTexture(140, evoliteTex)
-                .addTexture(178, evoliteTex)
-                .addTexture(216, evoliteTex, 0xFFE1E1E1)
-                .addTexture(255, evoliteTex)
+                .addTexture(63, evoliteBase, 0xFF404040)
+                .addTexture(102, evoliteBase, 0xFF808080)
+                .addTexture(140, evoliteBase)
+                .addTexture(178, evoliteHighlight)
+                .addTexture(216, evoliteHighlight, 0xFFE1E1E1)
+                .addTexture(255, evoliteHighlight)
                 .build());
     }
 }

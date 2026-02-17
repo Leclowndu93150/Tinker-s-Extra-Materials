@@ -2,7 +2,6 @@ package com.leclowndu93150.tinkers_extra_materials;
 
 import com.leclowndu93150.tinkers_extra_materials.data.TEDataGen;
 import com.leclowndu93150.tinkers_extra_materials.modifier.StandEntity;
-import com.leclowndu93150.tinkers_extra_materials.registry.TEBlocks;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEEntities;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEFluids;
 import com.leclowndu93150.tinkers_extra_materials.registry.TEHooks;
@@ -36,22 +35,18 @@ public class TinkersExtraMaterials {
             .displayItems((params, output) -> {
                 output.accept(TEItems.UNOBTAINIUM_INGOT.get());
                 output.accept(TEItems.UNOBTAINIUM_NUGGET.get());
-                output.accept(TEBlocks.UNOBTAINIUM_BLOCK_ITEM.get());
                 output.accept(TEFluids.MOLTEN_UNOBTAINIUM);
                 output.accept(TEItems.MYTHICAN_INGOT.get());
                 output.accept(TEItems.MYTHICAN_NUGGET.get());
-                output.accept(TEBlocks.MYTHICAN_BLOCK_ITEM.get());
                 output.accept(TEFluids.MOLTEN_MYTHICAN);
                 output.accept(TEItems.STAR_PLATINUM_INGOT.get());
                 output.accept(TEItems.STAR_PLATINUM_NUGGET.get());
-                output.accept(TEBlocks.STAR_PLATINUM_BLOCK_ITEM.get());
                 output.accept(TEFluids.MOLTEN_STAR_PLATINUM);
                 output.accept(TEItems.RUNICAN.get());
                 output.accept(TEItems.PILLAGUM.get());
                 output.accept(TEItems.MATERIAL_000.get());
                 output.accept(TEItems.BELL_METAL_INGOT.get());
                 output.accept(TEItems.BELL_METAL_NUGGET.get());
-                output.accept(TEBlocks.BELL_METAL_BLOCK_ITEM.get());
                 output.accept(TEFluids.MOLTEN_BELL_METAL);
                 output.accept(TEItems.EVOLITE.get());
             })
@@ -64,7 +59,6 @@ public class TinkersExtraMaterials {
         modEventBus.addListener(TinkersExtraMaterials::entityAttributes);
 
         TEItems.register(modEventBus);
-        TEBlocks.register(modEventBus);
         TEFluids.register(modEventBus);
         TEEntities.register(modEventBus);
         TEHooks.register();

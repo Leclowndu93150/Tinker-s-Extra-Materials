@@ -54,7 +54,7 @@ public class TEMConfig {
             .defineInRange("damage", 6.0, 1.0, 50.0);
         STAND_SPEED = builder
             .comment("Stand movement speed")
-            .defineInRange("speed", 0.1, 0.01, 1.0);
+            .defineInRange("speed", 0.35, 0.01, 1.0);
         STAND_SEARCH_RANGE = builder
             .comment("Range in blocks to search for targets when right-clicking")
             .defineInRange("searchRange", 32, 8, 64);

@@ -20,12 +20,12 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
             .meleeHarvest().ranged().armor().shieldCore()
             .fallbacks("metal")
             .colorMapper(GreyToColorMapping.builderFromBlack()
-                .addARGB(63, 0xFF1A1928)
-                .addARGB(102, 0xFF2E2D40)
-                .addARGB(140, 0xFF464558)
-                .addARGB(178, 0xFF5E5D72)
-                .addARGB(216, 0xFF7A7990)
-                .addARGB(255, 0xFF9896B0)
+                .addARGB(63, 0xFF080810)
+                .addARGB(102, 0xFF0C0B14)
+                .addARGB(140, 0xFF100F16)
+                .addARGB(178, 0xFF18171E)
+                .addARGB(216, 0xFF201F28)
+                .addARGB(255, 0xFF2A2932)
                 .build());
 
         ResourceLocation mythicanBase = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/mythican_base");
@@ -38,8 +38,8 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
                 .addTexture(102, mythicanBase, 0xFF808080)
                 .addTexture(140, mythicanBase)
                 .addTexture(178, mythicanBase)
-                    //.addTexture(216, mythicanHighlight, 0xFFE1E1E1)
-                //.addTexture(255, mythicanHighlight)
+                .addTexture(216, mythicanHighlight, 0xFFE1E1E1)
+                .addTexture(255, mythicanHighlight)
                 .build());
 
         buildMaterial(TEMaterialIds.STAR_PLATINUM)
@@ -80,7 +80,7 @@ public class TEMaterialSpriteProvider extends AbstractMaterialSpriteProvider {
 
         ResourceLocation material000Tex = new ResourceLocation(TinkersExtraMaterials.MODID, "generator/material_000");
         buildMaterial(TEMaterialIds.MATERIAL_000)
-            .meleeHarvest().ranged()
+            .meleeHarvest().ranged().armor().shieldCore()
             .fallbacks("metal")
             .transformer(GreyToSpriteTransformer.builderFromBlack()
                 .addTexture(63, material000Tex, 0xFF404040)
